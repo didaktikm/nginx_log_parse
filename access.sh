@@ -16,7 +16,7 @@ DAY='19/Apr/2016'
 # Variables and Helpers 
 # ======================================================================
 
-FILES=log/*.access.*
+FILES='access.log'
 
 COUNT_PER_SEC='count_per_sec.tmp'
 COUNT_BY_CODE='count_by_code.tmp'
