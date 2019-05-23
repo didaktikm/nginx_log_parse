@@ -11,3 +11,7 @@
 Коды ответа сервера 
 
 Топ запросов
+
+#### Пример работы скрипта:
+
+![alt-текст](https://github.com/didaktikm/nginx_log_parse/blob/master/access.sh.PNG "Пример работы скрипта")
