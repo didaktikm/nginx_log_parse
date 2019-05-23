@@ -1,4 +1,4 @@
-# Parser logs 
+# Parser logs of NGINX
 
 ## Простой скрипт разбора логов nginx
 
