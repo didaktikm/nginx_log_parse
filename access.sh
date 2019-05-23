@@ -2,7 +2,7 @@
 
 clear   
 
-FILES='kvist.ru.access.log'
+FILES='access.log'
 
 LCYAN='\033[1;36m'     #  ${LCYAN}
 NORMAL='\033[0m'		# ${NORMAL}
