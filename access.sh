@@ -35,7 +35,7 @@ REFERER_BY_FREQUENCY='referer_by_frequency.tmp'
       awk '{print "\033[0;33m" $2, $1}' $COUNT_BY_CODE
   
       echo -e "${LCYAN}Топ запросов ${NORMAL}"
-      awk 'FNR <= 5 {print $1, $2}' $REQUEST_BY_FREQUENCY
+      awk 'FNR <= 5 {print "\033[0;33m" $1, $2}' $REQUEST_BY_FREQUENCY
 	  
 	  tput sgr0
 	  
