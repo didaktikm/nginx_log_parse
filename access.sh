@@ -1,18 +1,16 @@
-#!/usr/bin/env bash
-
 clear   
-touch prev
+echo "0" > prev
 FILES='access.log'
-LRUN=$(cat prev)
+let LRUN=$(cat prev)+1
 
 LCYAN='\033[1;36m'     #  ${LCYAN}
 NORMAL='\033[0m'		# ${NORMAL}
 
+
 COUNT_BY_CODE='count_by_code.tmp'
 REQUEST_BY_FREQUENCY='request_by_frequency.tmp'
   
-  tail -n +$LRUN $FILES | awk '($4$5)' >> total.tmp
-
+  tail -n +$LRUN $FILES | awk '($4$5)' > total.tmp
 	
   awk '{print $9}' total.tmp | sort | uniq -c | sort -rn -o $COUNT_BY_CODE &
   awk '{ ind = match($6$7, /\?/)
@@ -21,7 +19,7 @@ REQUEST_BY_FREQUENCY='request_by_frequency.tmp'
          else
            print $6$7
        }' total.tmp | sort | uniq -c | sort -rn -o $REQUEST_BY_FREQUENCY
-     
+  
       echo -e "${LCYAN}Коды ответа сервера ${NORMAL}"
       awk '{print "\033[0;33m" $2, $1}' $COUNT_BY_CODE
   
@@ -30,9 +28,3 @@ REQUEST_BY_FREQUENCY='request_by_frequency.tmp'
 	  
 	  tput sgr0
 	  wc -l access.log | awk '{print $1}' > prev
-
-	  CBC=$(awk '{print "\033[0;33m" $2, $1}' $COUNT_BY_CODE)
-	  RBF=$(awk 'FNR <= 5 {print "\033[0;33m" $1, $2}' $REQUEST_BY_FREQUENCY)
-	  
-	  
-	  echo -e "Максимальное количество запросов в секунду:$MPS\n Коды ответа сервера:$CBC\n Топ запросов:$RBF\n" | mail -s "Nginx logs" user@mail.com
