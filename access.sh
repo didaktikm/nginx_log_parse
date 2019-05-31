@@ -28,3 +28,9 @@ REQUEST_BY_FREQUENCY='request_by_frequency.tmp'
 	  
 	  tput sgr0
 	  wc -l access.log | awk '{print $1}' > prev
+	  
+	  CBC=$(awk '{print "\033[0;33m" $2, $1}' $COUNT_BY_CODE)
+	  RBF=$(awk 'FNR <= 5 {print "\033[0;33m" $1, $2}' $REQUEST_BY_FREQUENCY)
+	  
+	  
+	  echo -e "Максимальное количество запросов в секунду:$MPS\n Коды ответа сервера:$CBC\n Топ запросов:$RBF\n" | mail -s "Nginx logs" user@mail.com
