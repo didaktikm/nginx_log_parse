@@ -1,5 +1,5 @@
 clear   
-echo "0" > prev
+if [ ! -f ./prev ];then echo "0" > prev;fi
 FILES='access.log'
 let LRUN=$(cat prev)+1
 
