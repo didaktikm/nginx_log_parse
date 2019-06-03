@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 clear   
 if [ ! -f ./prev ];then echo "0" > prev;fi
 FILES='access.log'
